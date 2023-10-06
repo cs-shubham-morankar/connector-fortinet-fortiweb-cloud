@@ -1,0 +1,588 @@
+{
+  "name": "fortinet-fortiweb-cloud",
+  "version": "1.0.0",
+  "label": "Fortinet FortiWeb Cloud",
+  "description": "FortiWeb Cloud is an cloud native SaaS based web application firewall (WAF) that protects web applications.",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "help_online": "",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "category": "Cloud Security",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "description": "Specify the URL of the FortiWeb Cloud server to connect and perform automated operations.",
+        "type": "text",
+        "name": "server_url",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "value": "https://api.fortiweb-cloud.com",
+        "tooltip": "Specify the URL of the FortiWeb Cloud server to connect and perform automated operations."
+      },
+      {
+        "title": "API Key",
+        "description": "Specify the API key to access the endpoint to which you will connect and perform the automated operations",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "api_key",
+        "tooltip": "Specify the API key to access the endpoint to which you will connect and perform the automated operations"
+      },
+      {
+        "title": "Verify SSL",
+        "description": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True.",
+        "name": "verify_ssl",
+        "type": "checkbox",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": true,
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_incident_dashboard_details",
+      "title": "Get Incident Dashboard Details",
+      "description": "Retrieves information for the global setting configurations from FortiWeb Cloud based on the widget name and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_incident_dashboard_details",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Widget Name",
+          "description": "Select the name of the widget based on which you want to filter the incident dashboard retrieved from FortiWeb Cloud. You can choose from the following options: Threats Timeline, Incidents Timeline, Country, Attack Type, High Risk, or Http Host.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "tooltip": "Select the name of the widget based on which you want to filter the incident dashboard retrieved from FortiWeb Cloud. You can choose from the following options: Threats Timeline, Incidents Timeline, Country, Attack Type, High Risk, or Http Host.",
+          "name": "widget_id",
+          "options": [
+            "Threats Timeline",
+            "Incidents Timeline",
+            "Source Country",
+            "Attack Type",
+            "High Risk",
+            "Http Host"
+          ]
+        },
+        {
+          "title": "Action Name",
+          "description": "Select the name of the action based on which you want to filter the incident dashboard retrieved from FortiWeb Cloud. You can choose from the following options: All, Block, or Monitor.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "tooltip": "Select the name of the action based on which you want to filter the incident dashboard retrieved from FortiWeb Cloud. You can choose from the following options: All, Block, or Monitor.",
+          "name": "action",
+          "options": [
+            "All",
+            "Block",
+            "Monitor"
+          ]
+        },
+        {
+          "title": "Host Name",
+          "description": "Specify the name of the host based on which you want to retrieve information from FortiWeb Cloud.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Specify the name of the host based on which you want to retrieve information from FortiWeb Cloud.",
+          "name": "host"
+        },
+        {
+          "title": "Time Range",
+          "description": "Specify the time range when the incidents were created in FortiWeb Cloud, and from when you want to retrieve incidents from FortiWeb Cloud. For e.g 24h, 7d, etc.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Specify the time range when the incidents were created in FortiWeb Cloud, and from when you want to retrieve incidents from FortiWeb Cloud. For e.g 24h, 7d, etc.",
+          "name": "time_range",
+          "placeholder": "For e.g 24h, 7d, etc."
+        }
+      ],
+      "conditional_output_schema": [
+        {
+          "condition": "{{widget_id === 'Threats Timeline'}}",
+          "output_schema": {
+            "start": "",
+            "end": "",
+            "line_data": [
+              {
+                "line_name": "",
+                "number": [
+                  {
+                    "id": "",
+                    "value": "",
+                    "time": ""
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{widget_id === 'Incidents Timeline'}}",
+          "output_schema": {
+            "start": "",
+            "end": "",
+            "line_data": [
+              {
+                "line_name": "",
+                "number": [
+                  {
+                    "id": "",
+                    "value": "",
+                    "time": ""
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{widget_id === 'Source Country'}}",
+          "output_schema": [
+            {
+              "name": "",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "condition": "{{widget_id === 'Attack Type'}}",
+          "output_schema": [
+            {
+              "name": "",
+              "percentage": ""
+            }
+          ]
+        },
+        {
+          "condition": "{{widget_id === 'High Risk'}}",
+          "output_schema": [
+            {
+              "incident_id": "",
+              "platform": "",
+              "risk": "",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "condition": "{{widget_id === 'Http Host'}}",
+          "output_schema": [
+            {
+              "name": "",
+              "threat_count": "",
+              "monitor_count": "",
+              "block_count": "",
+              "platform": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "operation": "get_incident_list",
+      "title": "Get Incident List",
+      "description": "Retrieves a list of all incidents from FortiWeb Cloud based on the time range and other input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_incident_list",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Time Range",
+          "description": "Specify the time range when the incidents were created in FortiWeb Cloud, and from when you want to retrieve incidents from FortiWeb Cloud. For e.g 24h, 7d, etc.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Specify the time range when the incidents were created in FortiWeb Cloud, and from when you want to retrieve incidents from FortiWeb Cloud. For e.g 24h, 7d, etc.",
+          "name": "time_range",
+          "placeholder": "For e.g 24h, 7d, etc."
+        },
+        {
+          "title": "Filter",
+          "description": "Specify multiple key/value pairs in json format used to filter incidents retrieved from the FortiWeb Cloud.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "tooltip": "Specify multiple key/value pairs in json format used to filter incidents retrieved from the FortiWeb Cloud.",
+          "name": "filter"
+        },
+        {
+          "title": "Page Size",
+          "description": "Specify the number of results, per page, that you want to include in the response of this operation.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "Specify the number of results, per page, that you want to include in the response of this operation.",
+          "name": "size"
+        },
+        {
+          "title": "Page Number",
+          "description": "Specify the page number from which you want to fetch incident from FortiWeb Cloud.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "Specify the page number from which you want to fetch incident from FortiWeb Cloud.",
+          "name": "page"
+        }
+      ],
+      "output_schema": {
+        "total": "",
+        "result": [
+          {
+            "incident_id": "",
+            "platform": "",
+            "risk": "",
+            "description": "",
+            "threat_count": "",
+            "block_count": "",
+            "tags": [],
+            "lasttime": "",
+            "create_time": "",
+            "blocked": "",
+            "host_desc": "",
+            "app_names": []
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_incident_details",
+      "title": "Get Incident Details",
+      "description": "Retrieves information for a specific incident from FortiWeb Cloud based on the incident ID you have specified.",
+      "category": "investigation",
+      "annotation": "get_incident_details",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "Specify the ID of the incident based on which you want to retrieve information from FortiWeb Cloud.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Specify the ID of the incident based on which you want to retrieve information from FortiWeb Cloud.",
+          "name": "incident_id"
+        }
+      ],
+      "output_schema": {
+        "incident_id": "",
+        "platform": "",
+        "risk": "",
+        "description": "",
+        "threat_count": "",
+        "block_count": "",
+        "tags": [],
+        "lasttime": "",
+        "create_time": "",
+        "blocked": "",
+        "host_desc": "",
+        "app_names": [],
+        "comments": [],
+        "attack_types": [],
+        "cve_ids": [],
+        "hosts": [],
+        "src_countries": [],
+        "firsttime": "",
+        "src_ips": [],
+        "http_urls": []
+      }
+    },
+    {
+      "operation": "get_incident_timeline_details",
+      "title": "Get Incident Timeline Details",
+      "description": "Retrieves information for a specific incident timeline from FortiWeb Cloud based on the incident ID you have specified.",
+      "category": "investigation",
+      "annotation": "get_incident_timeline_details",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "Specify the ID of the incident based on which you want to retrieve information from FortiWeb Cloud.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Specify the ID of the incident based on which you want to retrieve information from FortiWeb Cloud.",
+          "name": "incident_id"
+        }
+      ],
+      "output_schema": {
+        "start": "",
+        "end": "",
+        "line_data": [
+          {
+            "line_name": "",
+            "number": [
+              {
+                "id": "",
+                "value": "",
+                "time": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_insight_events_summary",
+      "title": "Get Insight Events Summary",
+      "description": "Retrieves a list of all insight events summary from FortiWeb Cloud.",
+      "category": "investigation",
+      "annotation": "get_insight_events_summary",
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "detail": "",
+        "result": {
+          "summary": [
+            {
+              "type": "",
+              "active": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "get_incident_aggregated_details",
+      "title": "Get Incident Aggregated Details",
+      "description": "Retrieves information for a specific incident aggregated from FortiWeb Cloud based on the incident ID and group by parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_incident_aggregated_details",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Incident ID",
+          "description": "Specify the ID of the incident based on which you want to retrieve information from FortiWeb Cloud.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Specify the ID of the incident based on which you want to retrieve information from FortiWeb Cloud.",
+          "name": "incident_id"
+        },
+        {
+          "title": "Group By",
+          "description": "Select the group by based on which you want to filter the incident aggregated retrieved from FortiWeb Cloud, Use \"Logs\" to get view sample attack logs of a specific incident. You can choose from the following options: Logs, Attack Type, Source Country, HTTP Host, HTTP URL, Source IP, Signature CVE ID, or OWASP TOP10.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "tooltip": "Select the group by based on which you want to filter the incident aggregated retrieved from FortiWeb Cloud, Use \"Logs\" to get view sample attack logs of a specific incident. You can choose from the following options: Logs, Attack Type, Source Country, HTTP Host, HTTP URL, Source IP, Signature CVE ID, or OWASP TOP10.",
+          "name": "name",
+          "options": [
+            "Logs",
+            "Attack Type",
+            "Source Country",
+            "HTTP Host",
+            "HTTP URL",
+            "Source IP",
+            "Signature CVE ID",
+            "OWASP TOP10"
+          ]
+        }
+      ],
+      "conditional_output_schema": [
+        {
+          "condition": "{{name === 'Logs'}}",
+          "output_schema": {
+            "total": "",
+            "result": [
+              {
+                "msg": "",
+                "log_id": "",
+                "threat_level": "",
+                "signature_cve_id": "",
+                "owasp_top10": "",
+                "main_type": "",
+                "http_url": "",
+                "srccountry": "",
+                "src_ip": "",
+                "signature_id": "",
+                "date_time": "",
+                "sub_type": "",
+                "action": "",
+                "msg_id": "",
+                "country_flag": "",
+                "_id": ""
+              }
+            ]
+          }
+        },
+        {
+          "condition": "{{name !== 'Logs'}}",
+          "output_schema": {
+            "total": "",
+            "result": [
+              {
+                "name": "",
+                "threat_count": "",
+                "monitor_count": "",
+                "block_count": "",
+                "platform": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "operation": "get_insight_events",
+      "title": "Get Insight Events",
+      "description": "Retrieves information for a insight events by event type from FortiWeb Cloud based on the input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_insight_events",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Event Type",
+          "description": "Select the type of the event based on which you want to filter the insight events retrieved from FortiWeb Cloud. You can choose from the following options: Exposed Server, Trust IP, Unprotected Host, Monitor Service, or WAF Config Alarm.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "tooltip": "Select the type of the event based on which you want to filter the insight events retrieved from FortiWeb Cloud. You can choose from the following options: Exposed Server, Trust IP, Unprotected Host, Monitor Service, or WAF Config Alarm.",
+          "name": "type",
+          "options": [
+            "Exposed Server",
+            "Trust IP",
+            "Unprotected Host",
+            "Monitor Service",
+            "WAF Config Alarm"
+          ]
+        },
+        {
+          "title": "Cursor",
+          "description": "To list the items of the first page, leave the cursor value empty. To go forward to next page, get the value of the \"next_cursor\" parameter in the result of the current page, then paste it here as the cursor value. To go to the previous page, get the \"prev_cursor\" value, then paste it here as the cursor value.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "To list the items of the first page, leave the cursor value empty. To go forward to next page, get the value of the \"next_cursor\" parameter in the result of the current page, then paste it here as the cursor value. To go to the previous page, get the \"prev_cursor\" value, then paste it here as the cursor value.",
+          "name": "cursor"
+        },
+        {
+          "title": "Page Size",
+          "description": "Specify the number of results, per page, that you want to include in the response of this operation. The value shall be 10, 20, 30.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "Specify the number of results, per page, that you want to include in the response of this operation. The value shall be 10, 20, 30.",
+          "name": "size"
+        },
+        {
+          "title": "Forward",
+          "description": "If you select this option it will fetch next page records, otherwise it will fetch previous page records.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "tooltip": "If you select this option it will fetch next page records, otherwise it will fetch previous page records.",
+          "name": "forward"
+        }
+      ],
+      "conditional_output_schema": [
+        {
+          "condition": "{{type === 'Exposed Server'}}",
+          "output_schema": {
+            "detail": "",
+            "result": {
+              "type": "",
+              "events": [
+                {
+                  "id": "",
+                  "app_name": "",
+                  "origin_server": [],
+                  "exposed_dns": "",
+                  "direct_access": "",
+                  "last_updated": ""
+                }
+              ],
+              "prev_cursor": "",
+              "next_cursor": "",
+              "total": ""
+            }
+          }
+        },
+        {
+          "condition": "{{type === 'Trust IP'}}",
+          "output_schema": {
+            "detail": "",
+            "result": {
+              "type": "",
+              "events": [],
+              "prev_cursor": "",
+              "next_cursor": "",
+              "total": ""
+            }
+          }
+        },
+        {
+          "condition": "{{type === 'Unprotected Host'}}",
+          "output_schema": {
+            "detail": "",
+            "result": {
+              "type": "",
+              "events": [],
+              "prev_cursor": "",
+              "next_cursor": "",
+              "total": ""
+            }
+          }
+        },
+        {
+          "condition": "{{type === 'Monitor Service'}}",
+          "output_schema": {
+            "detail": "",
+            "result": {
+              "type": "",
+              "events": [],
+              "prev_cursor": "",
+              "next_cursor": "",
+              "total": ""
+            }
+          }
+        },
+        {
+          "condition": "{{type === 'WAF Config Alarm'}}",
+          "output_schema": {
+            "detail": "",
+            "result": {
+              "type": "",
+              "events": [
+                {
+                  "id": "",
+                  "app_name": "",
+                  "configuration": "",
+                  "status": "",
+                  "last_updated": ""
+                }
+              ],
+              "prev_cursor": "",
+              "next_cursor": "",
+              "total": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
