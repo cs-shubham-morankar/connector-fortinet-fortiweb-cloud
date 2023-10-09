@@ -100,12 +100,12 @@
         },
         {
           "title": "Time Range",
-          "description": "Specify the time range when the incidents were created in FortiWeb Cloud, and from when you want to retrieve incidents from FortiWeb Cloud. For e.g 24h, 7d, etc.",
+          "description": "Specify the time range when the incident were created in FortiWeb Cloud, and from when you want to retrieve incident dashboard details from FortiWeb Cloud. For e.g 24h, 7d, etc.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify the time range when the incidents were created in FortiWeb Cloud, and from when you want to retrieve incidents from FortiWeb Cloud. For e.g 24h, 7d, etc.",
+          "tooltip": "Specify the time range when the incidents were created in FortiWeb Cloud, and from when you want to retrieve incident dashboard details from FortiWeb Cloud. For e.g 24h, 7d, etc.",
           "name": "time_range",
           "placeholder": "For e.g 24h, 7d, etc."
         }
