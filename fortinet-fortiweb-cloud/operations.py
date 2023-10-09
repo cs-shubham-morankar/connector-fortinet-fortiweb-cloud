@@ -16,7 +16,7 @@ class FortiWeb(object):
             self.url = url + '/v2'
         self.verify_ssl = config.get('verify_ssl')
 
-    def make_rest_call(self, url, method, data=None, params=None):
+    def make_rest_call(self, url, method='GET', data=None, params=None):
         try:
             url = self.url + url
             headers = {
@@ -59,7 +59,7 @@ def get_incident_dashboard_details(config, params):
             'time_range': params.get('time_range')
         }
         query_params = {k: v for k, v in query_params.items() if v is not None and v != ''}
-        response = fw.make_rest_call(endpoint, 'GET', params=query_params)
+        response = fw.make_rest_call(endpoint, params=query_params)
         return response
     except Exception as err:
         raise ConnectorError(str(err))
@@ -79,7 +79,7 @@ def get_incident_list(config, params):
             'page': params.get('page')
         }
         query_params = {k: v for k, v in query_params.items() if v is not None and v != ''}
-        response = fw.make_rest_call(endpoint, 'GET', params=query_params)
+        response = fw.make_rest_call(endpoint, params=query_params)
         return response
     except Exception as err:
         raise ConnectorError(str(err))
@@ -89,7 +89,7 @@ def get_incident_details(config, params):
     try:
         fw = FortiWeb(config)
         endpoint = '/threat_analytics/incidents/{0}'.format(params.get('incident_id'))
-        response = fw.make_rest_call(endpoint, 'GET')
+        response = fw.make_rest_call(endpoint)
         return response
     except Exception as err:
         raise ConnectorError(str(err))
@@ -99,7 +99,7 @@ def get_incident_timeline_details(config, params):
     try:
         fw = FortiWeb(config)
         endpoint = '/threat_analytics/incidents/{0}/timeline'.format(params.get('incident_id'))
-        response = fw.make_rest_call(endpoint, 'GET')
+        response = fw.make_rest_call(endpoint)
         return response
     except Exception as err:
         raise ConnectorError(str(err))
@@ -109,7 +109,7 @@ def get_insight_events_summary(config, params):
     try:
         fw = FortiWeb(config)
         endpoint = '/threat_analytics/insight/summary'
-        response = fw.make_rest_call(endpoint, 'GET')
+        response = fw.make_rest_call(endpoint)
         return response
     except Exception as err:
         raise ConnectorError(str(err))
@@ -122,7 +122,7 @@ def get_incident_aggregated_details(config, params):
         query_params = {
             'name': GROUP_BY.get(params.get('name'))
         }
-        response = fw.make_rest_call(endpoint, 'GET', params=query_params)
+        response = fw.make_rest_call(endpoint, params=query_params)
         return response
     except Exception as err:
         raise ConnectorError(str(err))
@@ -139,7 +139,7 @@ def get_insight_events(config, params):
             'forward': params.get('forward')
         }
         query_params = {k: v for k, v in query_params.items() if v is not None and v != ''}
-        response = fw.make_rest_call(endpoint, 'GET', params=query_params)
+        response = fw.make_rest_call(endpoint, params=query_params)
         return response
     except Exception as err:
         raise ConnectorError(str(err))
