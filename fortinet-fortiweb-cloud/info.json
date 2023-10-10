@@ -194,7 +194,7 @@
     },
     {
       "operation": "get_incident_list",
-      "title": "Get Incident List",
+      "title": "Get Incidents List",
       "description": "Retrieves a list of all incidents from FortiWeb Cloud based on the time range and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "get_incident_list",
