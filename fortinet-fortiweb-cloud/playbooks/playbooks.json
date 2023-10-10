@@ -1,0 +1,623 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Fortinet FortiWeb Cloud - 1.0.0",
+      "description": "Sample playbooks for \"Fortinet FortiWeb Cloud\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": null,
+      "uuid": "5794f2b9-1cd3-490e-a4b3-75902abafb8b",
+      "id": 87,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "Fortinet",
+        "fortinet-fortiweb-cloud"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incidents List",
+          "aliasName": null,
+          "tag": "#Fortinet FortiWeb Cloud",
+          "description": "Retrieves a list of all incidents from FortiWeb Cloud based on the time range and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1696613985,
+          "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2916f652-5ffd-4868-b822-eb29e0d93989",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incidents List",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiWeb Cloud",
+                "config": "",
+                "params": {
+                  "page": "",
+                  "size": "",
+                  "filter": "[\n  {\n    \"id\": \"risk\",\n    \"logic\": {\n      \"is\": {\n        \"string\": true\n      },\n      \"search\": \"string\"\n    },\n    \"value\": [\n      \"Low\"\n    ]\n  }\n]",
+                  "time_range": "7d"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiweb-cloud",
+                "operation": "get_incident_list",
+                "operationTitle": "Get Incidents List",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8fe7ec8c-af44-4712-944f-5fb674bd5c43"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "2916f652-5ffd-4868-b822-eb29e0d93989"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Incidents List",
+              "targetStep": "/api/3/workflow_steps/8fe7ec8c-af44-4712-944f-5fb674bd5c43",
+              "sourceStep": "/api/3/workflow_steps/2916f652-5ffd-4868-b822-eb29e0d93989",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "b21f2355-e031-4bfa-8919-dddb5bb7e282"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "17a50056-c7a7-48a7-bb0d-f14f7c5948c6",
+          "id": 1109,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiweb-cloud"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident Timeline Details",
+          "aliasName": null,
+          "tag": "#Fortinet FortiWeb Cloud",
+          "description": "Retrieves information for a specific incident timeline from FortiWeb Cloud based on the incident ID you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/fec10a22-1762-4ae6-8488-ed929679fb6b",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Timeline Details",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiWeb Cloud",
+                "config": "",
+                "params": {
+                  "incident_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiweb-cloud",
+                "operation": "get_incident_timeline_details",
+                "operationTitle": "Get Incident Timeline Details"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "c01a6301-49d7-49f8-8744-61ef9fbe8480"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "fec10a22-1762-4ae6-8488-ed929679fb6b"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Incident Timeline Details",
+              "targetStep": "/api/3/workflow_steps/c01a6301-49d7-49f8-8744-61ef9fbe8480",
+              "sourceStep": "/api/3/workflow_steps/fec10a22-1762-4ae6-8488-ed929679fb6b",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "db806906-ef94-4faa-8a4d-5acf4cff6f3d"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "21fcd5f6-50d5-4e4f-b600-aef3354d545c",
+          "id": 1111,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiweb-cloud"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident Details",
+          "aliasName": null,
+          "tag": "#Fortinet FortiWeb Cloud",
+          "description": "Retrieves information for a specific incident from FortiWeb Cloud based on the incident ID you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/dbf72bd3-309b-4915-afef-309975dc1c50",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Details",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiWeb Cloud",
+                "config": "",
+                "params": {
+                  "incident_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiweb-cloud",
+                "operation": "get_incident_details",
+                "operationTitle": "Get Incident Details"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "890eaf4c-d5d4-40e8-a54c-801b1cb5381f"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "dbf72bd3-309b-4915-afef-309975dc1c50"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Incident Details",
+              "targetStep": "/api/3/workflow_steps/890eaf4c-d5d4-40e8-a54c-801b1cb5381f",
+              "sourceStep": "/api/3/workflow_steps/dbf72bd3-309b-4915-afef-309975dc1c50",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "9a5e52d8-aa5d-4544-ac33-e2bc8b5b8236"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "26c13244-f5fe-458a-a994-4b2679462ec8",
+          "id": 1110,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiweb-cloud"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Insight Events Summary",
+          "aliasName": null,
+          "tag": "#Fortinet FortiWeb Cloud",
+          "description": "Retrieves a list of all insight events summary from FortiWeb Cloud.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/772f5650-bf05-41e0-a318-199015c9c647",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Insight Events Summary",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiWeb Cloud",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortiweb-cloud",
+                "operation": "get_insight_events_summary",
+                "operationTitle": "Get Insight Events Summary"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "6668f4ce-6592-41e7-85e0-f239daa86917"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "772f5650-bf05-41e0-a318-199015c9c647"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Insight Events Summary",
+              "targetStep": "/api/3/workflow_steps/6668f4ce-6592-41e7-85e0-f239daa86917",
+              "sourceStep": "/api/3/workflow_steps/772f5650-bf05-41e0-a318-199015c9c647",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "4684da81-ebb7-4d52-95b0-a57a5be71bac"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "385aec69-7175-41df-9f30-cf36efe7a43b",
+          "id": 1112,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiweb-cloud"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident Aggregated Details",
+          "aliasName": null,
+          "tag": "#Fortinet FortiWeb Cloud",
+          "description": "Retrieves information for a specific incident aggregated from FortiWeb Cloud based on the incident ID and group by parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/c6f3fcea-108c-4f26-b705-d96d719f8f2e",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Aggregated Details",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiWeb Cloud",
+                "config": "",
+                "params": {
+                  "name": "",
+                  "incident_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiweb-cloud",
+                "operation": "get_incident_aggregated_details",
+                "operationTitle": "Get Incident Aggregated Details"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "eecb928e-4f62-43df-96e9-6f2c30627354"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "c6f3fcea-108c-4f26-b705-d96d719f8f2e"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Incident Aggregated Details",
+              "targetStep": "/api/3/workflow_steps/eecb928e-4f62-43df-96e9-6f2c30627354",
+              "sourceStep": "/api/3/workflow_steps/c6f3fcea-108c-4f26-b705-d96d719f8f2e",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "d014fe30-ec1f-4106-92c2-5456ff966a3b"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "b2356f52-596b-4d19-b438-c65d86cb7c45",
+          "id": 1113,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiweb-cloud"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Insight Events",
+          "aliasName": null,
+          "tag": "#Fortinet FortiWeb Cloud",
+          "description": "Retrieves information for a insight events by event type from FortiWeb Cloud based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2542e9e3-bce6-4d55-a658-24f96a0f1332",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Insight Events",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiWeb Cloud",
+                "config": "",
+                "params": {
+                  "size": "",
+                  "type": "",
+                  "cursor": "",
+                  "forward": ""
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiweb-cloud",
+                "operation": "get_insight_events",
+                "operationTitle": "Get Insight Events"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "92fc9e1c-7f56-421b-a974-d9c2948a990d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "2542e9e3-bce6-4d55-a658-24f96a0f1332"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Insight Events",
+              "targetStep": "/api/3/workflow_steps/92fc9e1c-7f56-421b-a974-d9c2948a990d",
+              "sourceStep": "/api/3/workflow_steps/2542e9e3-bce6-4d55-a658-24f96a0f1332",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "0bc17942-a089-4a8a-b6ba-102fe28a0d55"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "eebe7739-795b-436a-b6c7-eb222e76bc30",
+          "id": 1114,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiweb-cloud"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Incident Dashboard Details",
+          "aliasName": null,
+          "tag": "#Fortinet FortiWeb Cloud",
+          "description": "Retrieves information for the global setting configurations from FortiWeb Cloud based on the widget name and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/5218a65a-8602-487b-9440-b40b3a58a459",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Dashboard Details",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiWeb Cloud",
+                "config": "",
+                "params": {
+                  "host": "",
+                  "action": "",
+                  "widget_id": "",
+                  "time_range": ""
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortiweb-cloud",
+                "operation": "get_incident_dashboard_details",
+                "operationTitle": "Get Incident Dashboard Details"
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "1ba50bd0-f220-4704-80c4-d6cfa2ca4aee"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "5218a65a-8602-487b-9440-b40b3a58a459"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Incident Dashboard Details",
+              "targetStep": "/api/3/workflow_steps/1ba50bd0-f220-4704-80c4-d6cfa2ca4aee",
+              "sourceStep": "/api/3/workflow_steps/5218a65a-8602-487b-9440-b40b3a58a459",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "88a66400-b630-46f1-bc46-834f49dabe4e"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "f2b6d496-9d94-468c-904a-d96626f0fe8c",
+          "id": 1108,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiweb-cloud"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Fortinet",
+    "fortinet-fortiweb-cloud"
+  ]
+}
