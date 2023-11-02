@@ -1,3 +1,10 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2023 Fortinet Inc
+Copyright end
+"""
+
 import requests, json
 import urllib.parse
 from .constants import *
@@ -33,7 +40,7 @@ class FortiWeb(object):
                 else:
                     return response
             else:
-                logger.error("{0}".format(response.status_code))
+                logger.debug("response_content {0}:{1}".format(response.status_code, response.content))
                 raise ConnectorError("{0}:{1}".format(response.status_code, response.text))
         except requests.exceptions.SSLError:
             raise ConnectorError('SSL certificate validation failed')
@@ -53,7 +60,7 @@ def get_incident_dashboard_details(config, params):
         fw = FortiWeb(config)
         endpoint = '/threat_analytics/dashboard'
         query_params = {
-            'widget_id': WIDGET_NAMES.get(params.get('widget_id')),
+            'widget_id': WIDGET_NAMES.get(params.get('widget_id'), params.get('widget_id')),
             'action': params.get('action').lower() if params.get('action') else '',
             'host': params.get('host'),
             'time_range': params.get('time_range')
@@ -120,7 +127,7 @@ def get_incident_aggregated_details(config, params):
         fw = FortiWeb(config)
         endpoint = '/threat_analytics/incidents/{0}/aggs'.format(params.get('incident_id'))
         query_params = {
-            'name': GROUP_BY.get(params.get('name'))
+            'name': GROUP_BY.get(params.get('name'), params.get('name'))
         }
         response = fw.make_rest_call(endpoint, params=query_params)
         return response
@@ -133,7 +140,7 @@ def get_insight_events(config, params):
         fw = FortiWeb(config)
         endpoint = '/threat_analytics/insight'
         query_params = {
-            'type': EVENT_TYPE.get(params.get('type')),
+            'type': EVENT_TYPE.get(params.get('type'), params.get('type')),
             'cursor': params.get('cursor'),
             'size': params.get('size'),
             'forward': params.get('forward')
@@ -151,7 +158,7 @@ def check_health(config):
         if response:
             return True
     except Exception as err:
-        logger.info(str(err))
+        logger.exception(str(err))
         raise ConnectorError(str(err))
 
 

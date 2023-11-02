@@ -1,3 +1,10 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2023 Fortinet Inc
+Copyright end
+"""
+
 WIDGET_NAMES = {
     "Threats Timeline": "threats_timeline",
     "Incidents Timeline": "incidents_timeline",
