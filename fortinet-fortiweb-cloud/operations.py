@@ -30,9 +30,7 @@ class FortiWeb(object):
                 'Content-Type': 'application/json',
                 'Authorization': 'Basic ' + self.api_key
             }
-            logger.debug("Endpoint {0}".format(url))
             response = requests.request(method, url, data=data, params=params, headers=headers, verify=self.verify_ssl)
-            logger.debug("response_content {0}:{1}".format(response.status_code, response.content))
             if response.ok or response.status_code == 204:
                 logger.info('Successfully got response for url {0}'.format(url))
                 if 'json' in str(response.headers):
