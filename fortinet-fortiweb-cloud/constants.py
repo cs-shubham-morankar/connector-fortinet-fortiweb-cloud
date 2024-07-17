@@ -1,7 +1,7 @@
 """
 Copyright start
 MIT License
-Copyright (c) 2023 Fortinet Inc
+Copyright (c) 2024 Fortinet Inc
 Copyright end
 """
 
@@ -31,4 +31,10 @@ EVENT_TYPE = {
     "Unprotected Host": "unprotected_host",
     "Monitor Service": "monitor_service",
     "WAF Config Alarm": "waf_config_alarm"
+}
+
+IP_TYPE = {
+    "Trust IP": "trust-ip",
+    "Block IP": "block-ip",
+    "Allow Only IP": "allow-only-ip"
 }
