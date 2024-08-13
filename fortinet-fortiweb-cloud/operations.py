@@ -187,19 +187,23 @@ def delete_ip_protection(config, params):
         query_params = get_ip_protection(config, params).get("result")
         endpoint = "/application/{ep_id}/ip_protection".format(ep_id=params.get("epid"))
 
-        # sanitizing the ip_list because fortiweb when the IP is removed it does not remove well
-        for idx in reversed(range(len(query_params["configs"]["ip_list"]))):
-            if not isinstance(query_params["configs"]["ip_list"][idx].get("ip"), str):
-                del query_params["configs"]["ip_list"][idx]
-
         ip_type = IP_TYPE.get(params.get("iptype"))
         for idx in range(len(query_params["configs"]["ip_list"])):
             ips = query_params["configs"]["ip_list"][idx].get("ip", "").split(",")
             if query_params["configs"]["ip_list"][idx].get("type") == ip_type and params.get("ipaddress") in ips:
                 ips.remove(params.get("ipaddress"))
-                query_params["configs"]["ip_list"][idx]["ip"] = ",".join(ips)
+                if len(ips) == 0:
+                    ips = None
+                    query_params["configs"]["ip_list"][idx]["ip"] = ips
+                else:
+                    query_params["configs"]["ip_list"][idx]["ip"] = ",".join(ips)
+                logger.debug("IP Addresses {0}: {1}".format(idx, ips))
                 break
 
+        # sanitizing the ip_list because fortiweb when the IP is removed it does not remove well
+        for idx in reversed(range(len(query_params["configs"]["ip_list"]))):
+            if not isinstance(query_params["configs"]["ip_list"][idx].get("ip"), str):
+                del query_params["configs"]["ip_list"][idx]
         response = fw.make_rest_call(endpoint, data=json.dumps(query_params), method="PUT")
         return response
     except Exception as err:

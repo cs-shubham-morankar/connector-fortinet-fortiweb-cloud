@@ -607,20 +607,20 @@
       ],
       "output_schema": {
         "result": {
-          "template": "",
           "configs": {
             "status": "",
-            "ip_reputation": "",
-            "block_country_list": [],
             "ip_list": [
               {
+                "ip": "",
                 "idx": "",
-                "type": "",
-                "ip": ""
+                "type": ""
               }
             ],
+            "ip_reputation": "",
+            "block_country_list": [],
             "geo_ip_exception_list": []
-          }
+          },
+          "template": ""
         }
       }
     },
@@ -671,7 +671,9 @@
           "tooltip": "Specify the client’s source IP address. It can be a single IP or a range of addresses (e.g., 172.22.14.1-172.22.14.256 or 10:200::10:1-10:200:10:100)"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "detail": ""
+      }
     },
     {
       "operation": "delete_ip_protection",
@@ -720,7 +722,9 @@
           "tooltip": "Specify the client’s source IP address. It can be a single IP or a range of addresses (e.g., 172.22.14.1-172.22.14.256 or 10:200::10:1-10:200:10:100)"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "detail": ""
+      }
     },
     {
       "operation": "get_application_list",
@@ -769,48 +773,40 @@
         }
       ],
       "output_schema": {
+        "total": "",
+        "can_add": "",
         "app_list": [
           {
-            "user_id": "",
-            "ep_id": "",
-            "app_name": "",
-            "domain_name": "",
-            "extra_domains": [],
-            "ep_cname": "",
-            "region": "",
-            "platform_region": "",
-            "platform": "",
-            "block_mode": "",
-            "cdn_status": "",
-            "template_id": "",
-            "tenant_id": "",
-            "can_update": "",
-            "can_delete": "",
-            "dns_status": "",
-            "domain_status": {
-              "www1.demo.com": ""
-            },
-            "naked_domain_ips": [],
-            "waf_addresses": {
-              "us-east-1": [
-                {
-                  "ip": ""
-                }
-              ]
-            },
-            "template_name": "",
             "req": "",
-            "blocked_req": "",
+            "cost": "",
             "data": "",
-            "assign_to": "",
-            "assign_to_user_name": "",
-            "acme_info": []
+            "ep_id": "",
+            "region": "",
+            "user_id": "",
+            "app_name": "",
+            "ep_cname": "",
+            "platform": "",
+            "acme_info": [],
+            "tenant_id": "",
+            "block_mode": "",
+            "can_delete": "",
+            "can_update": "",
+            "cdn_status": "",
+            "dns_status": "",
+            "blocked_req": "",
+            "create_time": "",
+            "domain_name": "",
+            "template_id": "",
+            "domain_status": {},
+            "extra_domains": [],
+            "template_name": "",
+            "platform_region": "",
+            "naked_domain_ips": []
           }
         ],
-        "total": "",
-        "prev_cursor": "",
         "next_cursor": "",
-        "can_add": ""
+        "prev_cursor": "",
+        "template_perm": ""
       }
     }
   ]
