@@ -8,7 +8,7 @@
       "visible": true,
       "image": null,
       "uuid": "5794f2b9-1cd3-490e-a4b3-75902abafb8b",
-      "id": 78,
+      "id": 130,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
@@ -29,26 +29,33 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1721119242,
+          "lastModifyDate": 1725952922,
           "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/c7429930-d9f6-4bd4-b3a9-3f5e998092c7",
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Get Applications List",
+              "name": "Get Application List",
               "description": null,
               "arguments": {
                 "name": "Fortinet FortiWeb Cloud",
-                "config": "76713b6a-a644-4932-9d65-18f743c15667",
+                "config": "95e7e297-3264-4720-bbb5-68299b6a5544",
                 "params": {
                   "size": "",
                   "cursor": "",
                   "filter": [
                     {
-                      "id": "",
-                      "logic": [],
-                      "value": []
+                      "id": "platform",
+                      "logic": {
+                        "is": {
+                          "string": true
+                        }
+                      },
+                      "value": [
+                        "GCP",
+                        "AWS"
+                      ]
                     }
                   ]
                 },
@@ -60,11 +67,11 @@
                 "step_variables": []
               },
               "status": null,
-              "top": "160",
-              "left": "300",
+              "top": "236",
+              "left": "430",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "d8bf1a18-6d62-4382-909b-c3727c75364e"
+              "uuid": "d3286718-69dd-469f-b1d2-f79e7976d53d"
             },
             {
               "@type": "WorkflowStep",
@@ -105,19 +112,19 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get Applications List",
-              "targetStep": "/api/3/workflow_steps/d8bf1a18-6d62-4382-909b-c3727c75364e",
+              "name": "Start -> Get Application List",
+              "targetStep": "/api/3/workflow_steps/d3286718-69dd-469f-b1d2-f79e7976d53d",
               "sourceStep": "/api/3/workflow_steps/c7429930-d9f6-4bd4-b3a9-3f5e998092c7",
               "label": null,
               "isExecuted": false,
               "group": null,
-              "uuid": "3cc36ebe-2897-4410-a200-1cffb239e536"
+              "uuid": "9395a975-6cc2-4f42-acb1-2281c9712826"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "0dc14e3b-d5bd-4334-8fdf-6cc7931e79ea",
-          "id": 887,
+          "id": 1630,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -205,7 +212,7 @@
           "groups": [],
           "priority": null,
           "uuid": "17a50056-c7a7-48a7-bb0d-f14f7c5948c6",
-          "id": 877,
+          "id": 1631,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -289,7 +296,7 @@
           "groups": [],
           "priority": null,
           "uuid": "21fcd5f6-50d5-4e4f-b600-aef3354d545c",
-          "id": 878,
+          "id": 1632,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -373,7 +380,7 @@
           "groups": [],
           "priority": null,
           "uuid": "26c13244-f5fe-458a-a994-4b2679462ec8",
-          "id": 879,
+          "id": 1633,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -455,7 +462,7 @@
           "groups": [],
           "priority": null,
           "uuid": "385aec69-7175-41df-9f30-cf36efe7a43b",
-          "id": 880,
+          "id": 1634,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -478,7 +485,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1721119010,
+          "lastModifyDate": 1725953310,
           "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/e88b0f9c-64dd-47ce-83bf-07d0f26196e7",
@@ -491,7 +498,7 @@
                 "name": "Fortinet FortiWeb Cloud",
                 "config": "76713b6a-a644-4932-9d65-18f743c15667",
                 "params": {
-                  "epid": "1"
+                  "epid": "8242004135"
                 },
                 "version": "1.1.0",
                 "connector": "fortinet-fortiweb-cloud",
@@ -558,7 +565,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "41f11feb-24c8-45cf-bab8-be5fa188f8da",
-          "id": 884,
+          "id": 1635,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -581,7 +588,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1721119165,
+          "lastModifyDate": 1725953363,
           "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/a710f7b1-654e-4e4f-9e5c-b3b14c077358",
@@ -596,7 +603,8 @@
                 "params": {
                   "epid": "1",
                   "iptype": "Trust IP",
-                  "ipaddress": "1.1.1.1"
+                  "ipaddress": "10.132.254.159",
+                  "block_country_list": []
                 },
                 "version": "1.1.0",
                 "connector": "fortinet-fortiweb-cloud",
@@ -663,7 +671,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "9d330a7e-d64d-4459-9cb3-7a76c542e551",
-          "id": 886,
+          "id": 1636,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -748,7 +756,7 @@
           "groups": [],
           "priority": null,
           "uuid": "b2356f52-596b-4d19-b438-c65d86cb7c45",
-          "id": 881,
+          "id": 1637,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -836,7 +844,7 @@
           "groups": [],
           "priority": null,
           "uuid": "eebe7739-795b-436a-b6c7-eb222e76bc30",
-          "id": 882,
+          "id": 1638,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -859,7 +867,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1721119099,
+          "lastModifyDate": 1725953384,
           "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/114a0ac2-2712-41a9-8322-4b0aae054b74",
@@ -874,7 +882,8 @@
                 "params": {
                   "epid": "1",
                   "iptype": "Trust IP",
-                  "ipaddress": "1.1.1.1"
+                  "ipaddress": "10.132.254.159",
+                  "block_country_list": []
                 },
                 "version": "1.1.0",
                 "connector": "fortinet-fortiweb-cloud",
@@ -941,7 +950,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "f283b614-d2b3-4401-a0c6-6b0d4086298a",
-          "id": 885,
+          "id": 1639,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1028,7 +1037,7 @@
           "groups": [],
           "priority": null,
           "uuid": "f2b6d496-9d94-468c-904a-d96626f0fe8c",
-          "id": 883,
+          "id": 1640,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
