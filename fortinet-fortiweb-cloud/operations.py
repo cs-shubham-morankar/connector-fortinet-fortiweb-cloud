@@ -175,8 +175,6 @@ def add_ip_protection(config, params):
             query_params["configs"]["ip_list"] = []
         ip_type = IP_TYPE.get(params.get("iptype"))
         query_params["configs"]["ip_list"].append({"type": ip_type, "ip": params.get("ipaddress")})
-        if params.get('block_country_list'):
-            query_params["configs"]["block_country_list"] = query_params["configs"]["block_country_list"] + params.get('block_country_list')
         response = fw.make_rest_call(endpoint, data=json.dumps(query_params), method="PUT")
         return response
     except Exception as err:
@@ -209,8 +207,6 @@ def delete_ip_protection(config, params):
         for idx in reversed(range(len(query_params["configs"]["ip_list"]))):
             if not isinstance(query_params["configs"]["ip_list"][idx].get("ip"), str):
                 del query_params["configs"]["ip_list"][idx]
-        if params.get('block_country_list'):
-            query_params["configs"]["block_country_list"] = query_params["configs"]["block_country_list"] + params.get('block_country_list')
         response = fw.make_rest_call(endpoint, data=json.dumps(query_params), method="PUT")
         return response
     except Exception as err:
