@@ -1046,6 +1046,97 @@
             "Fortinet",
             "fortinet-fortiweb-cloud"
           ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Geo IP Block List",
+          "aliasName": null,
+          "tag": null,
+          "description": "Block requests from client by geography by updating the Geo IP Block list based on the Application ID, Countries, and other input paramters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1726720819,
+          "collection": "/api/3/workflow_collections/5794f2b9-1cd3-490e-a4b3-75902abafb8b",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/0e3ec2b0-098f-4020-9e2d-967ff36145a6",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "120",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "0e3ec2b0-098f-4020-9e2d-967ff36145a6"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Geo IP Block List",
+              "description": null,
+              "arguments": {
+                "name": "Fortinet FortiWeb Cloud Dev",
+                "config": "0664efff-4597-4b59-a0a4-b996aa4a1a9a",
+                "params": {
+                  "epid": "8242004135",
+                  "block_country_list": "",
+                  "operation_to_perform": "Add Countries To Block List"
+                },
+                "version": "1.1.0",
+                "connector": "fortinet-fortiweb-cloud_dev",
+                "operation": "update_geo_ip_block_list",
+                "operationTitle": "Update Geo IP Block List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "180",
+              "left": "460",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "3442007c-f8c6-4fcf-a7b2-75a07c5772d1"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Update Geo IP Block List",
+              "targetStep": "/api/3/workflow_steps/3442007c-f8c6-4fcf-a7b2-75a07c5772d1",
+              "sourceStep": "/api/3/workflow_steps/0e3ec2b0-098f-4020-9e2d-967ff36145a6",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "08debec2-3b87-4762-ae4d-2137cb913eb0"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "137a363c-4139-47c1-af0c-f9ca7a3ac136",
+          "id": 1076,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortiweb-cloud"
+          ]
         }
       ]
     }
