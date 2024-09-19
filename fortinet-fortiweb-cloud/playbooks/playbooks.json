@@ -1091,7 +1091,7 @@
               "name": "Update Geo IP Block List",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud Dev",
+                "name": "Fortinet FortiWeb Cloud",
                 "config": "0664efff-4597-4b59-a0a4-b996aa4a1a9a",
                 "params": {
                   "epid": "8242004135",
@@ -1099,7 +1099,7 @@
                   "operation_to_perform": "Add Countries To Block List"
                 },
                 "version": "1.1.0",
-                "connector": "fortinet-fortiweb-cloud_dev",
+                "connector": "fortinet-fortiweb-cloud",
                 "operation": "update_geo_ip_block_list",
                 "operationTitle": "Update Geo IP Block List",
                 "pickFromTenant": false,
