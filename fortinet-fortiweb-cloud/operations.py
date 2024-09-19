@@ -213,6 +213,27 @@ def delete_ip_protection(config, params):
         raise ConnectorError(str(err))
 
 
+def update_geo_ip_block_list(config, params):
+    try:
+        fw = FortiWeb(config)
+        query_params = get_ip_protection(config, params).get("result")
+        endpoint = "/application/{ep_id}/ip_protection".format(ep_id=params.get("epid"))
+        if params.get("block_country_list"):
+            original_list = query_params["configs"]["block_country_list"]
+            if params.get("operation_to_perform") == "Add Countries To Block List":
+                original_list = list(set(original_list) | set(params["block_country_list"]))
+            else:
+                original_list = [country for country in original_list if country not in params["block_country_list"]]
+            query_params["configs"]["block_country_list"] = original_list
+            response = fw.make_rest_call(endpoint, data=json.dumps(query_params), method="PUT")
+            return response
+        else:
+            logger.error(f"\n\nNo countries selected. Please select at least one country to proceed.\n\n")
+            return {"detail": "No countries selected. Please select at least one country to proceed."}
+    except Exception as err:
+        raise ConnectorError(str(err))
+
+
 def get_application_list(config, params):
     try:
         fw = FortiWeb(config)
@@ -251,5 +272,6 @@ operations = {
     "get_application_list": get_application_list,
     "get_ip_protection": get_ip_protection,
     "add_ip_protection": add_ip_protection,
-    "delete_ip_protection": delete_ip_protection
+    "delete_ip_protection": delete_ip_protection,
+    "update_geo_ip_block_list": update_geo_ip_block_list
 }
