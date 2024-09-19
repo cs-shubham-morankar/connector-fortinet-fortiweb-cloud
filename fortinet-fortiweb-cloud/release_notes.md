@@ -5,3 +5,4 @@
     - Add IP Protection
     - Get IP Protection
     - Delete IP Protection
+    - Update Geo IP Block List
