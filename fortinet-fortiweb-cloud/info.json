@@ -645,7 +645,7 @@
         },
         {
           "title": "IP Type",
-          "description": "Select the type of the IP operation to add in FortiWeb Cloud. You can choose from the following options: Trust IP, Block IP, or Allow Only IP.",
+          "description": "Select the type of the list in which to add the IP addresses. You can choose from the following options: Trust IP, Block IP, or Allow Only IP.",
           "type": "select",
           "name": "iptype",
           "required": true,
@@ -657,18 +657,18 @@
             "Block IP",
             "Allow Only IP"
           ],
-          "tooltip": "Select the type of the IP operation to add in FortiWeb Cloud. You can choose from the following options: Trust IP, Block IP, or Allow Only IP."
+          "tooltip": "Select the type of the list in which to add the IP addresses. You can choose from the following options: Trust IP, Block IP, or Allow Only IP."
         },
         {
           "title": "IP Address",
-          "description": "Specify the IP address of the application to add in FortiWeb Cloud.",
+          "description": "Specify IP addresses to add in the selected list type. You can specify either a single IP address, or multiple IP addresses as comma-separated values or ranges. For example: 192.168.1.1, 192.168.1.2 or 192.168.1.1-192.168.14.256 or 192:168::20:1-192:168:30:150. Note: These IP addresses are added to the list selected in the IP Type parameter.",
           "type": "text",
           "name": "ipaddress",
           "required": true,
           "visible": true,
           "editable": true,
           "value": "",
-          "tooltip": "Specify the IP address of the application to add in FortiWeb Cloud. It can be a single IP or a range of addresses (e.g., 172.22.14.1-172.22.14.256 or 10:200::10:1-10:200:10:100)"
+          "tooltip": "Specify IP addresses to add in the selected list type. You can specify either a single IP address, or multiple IP addresses as comma-separated values or ranges. For example: 192.168.1.1, 192.168.1.2 or 192.168.1.1-192.168.14.256 or 192:168::20:1-192:168:30:150. Note: These IP addresses are added to the list selected in the IP Type parameter."
         }
       ],
       "output_schema": {
@@ -696,7 +696,7 @@
         },
         {
           "title": "IP Type",
-          "description": "Select the type of the IP operation being deleted from FortiWeb Cloud. You can choose from the following options: Trust IP, Block IP, or Allow Only IP.",
+          "description": "Select the type of the list from which to delete the IP addresses. You can choose from the following options: Trust IP, Block IP, or Allow Only IP.",
           "type": "select",
           "name": "iptype",
           "required": true,
@@ -708,7 +708,7 @@
             "Block IP",
             "Allow Only IP"
           ],
-          "tooltip": "Select the type of the IP operation being deleted from FortiWeb Cloud. You can choose from the following options: Trust IP, Block IP, or Allow Only IP."
+          "tooltip": "Select the type of the list from which to delete the IP addresses. You can choose from the following options: Trust IP, Block IP, or Allow Only IP."
         },
         {
           "title": "IP Address",
@@ -760,12 +760,12 @@
         },
         {
           "title": "Page Size",
-          "description": "(Optional) Specify the number of results, per page, to include in the response of this operation.",
+          "description": "(Optional) Specify the number of results, per page, to include in the response of this operation. The values can be 10, 20, or 30.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
-          "tooltip": "(Optional) Specify the number of results, per page, to include in the response of this operation. The value shall be 10, 20, 30.",
+          "tooltip": "(Optional) Specify the number of results, per page, to include in the response of this operation. The values can be 10, 20, or 30.",
           "name": "size"
         },
         {
@@ -819,21 +819,21 @@
     {
       "operation": "update_geo_ip_block_list",
       "title": "Update Geo IP Block List",
-      "description": "Block requests from client by geography by updating the Geo IP Block list based on the Application ID, Countries, and other input paramters you have specified.",
+      "description": "Blocks requests from clients from entire geographical locations based on the Application ID, Countries, and other input parameters that you have specified.",
       "category": "investigation",
       "annotation": "update_geo_ip_block_list",
       "enabled": true,
       "parameters": [
         {
           "title": "Application ID",
-          "description": "Specify the ID of the application in which you want to update the Geo IP Block.",
+          "description": "Specify the ID of the application in which to update the Geo IP Block.",
           "type": "text",
           "name": "epid",
           "required": true,
           "visible": true,
           "editable": true,
           "placeholder": "8242004135",
-          "tooltip": "Specify the ID of the application in which you want to update the Geo IP Block"
+          "tooltip": "Specify the ID of the application in which to update the Geo IP Block."
         },
         {
           "title": "Operation To Perform",
@@ -844,7 +844,7 @@
           "visible": true,
           "editable": true,
           "value": "Add Countries To Block List",
-          "tooltip": "Select the type of operation to perform on the Geo IP Block List",
+          "tooltip": "Select the type of operation to perform on the Geo IP Block List. You can choose from the following options: Add Countries To Block List or Remove Countries From Block List.",
           "options": [
             "Add Countries To Block List",
             "Remove Countries From Block List"
@@ -852,13 +852,13 @@
         },
         {
           "title": "Countries",
-          "description": "Select one or more countries, to block requests from clients by geography.",
+          "description": "(Optional) Select one or more countries, from where to block or allow requests. NOTE: Requests from these countries are blocked or allowed as the per the selection in Operation To Perform parameter.",
           "type": "multiselect",
           "name": "block_country_list",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select one or more countries, to block requests from clients by geography",
+          "tooltip": "(Optional) Select one or more countries, from where to block or allow requests. NOTE: Requests from these countries are blocked or allowed as the per the selection in Operation To Perform parameter.",
           "options": [
             "Afghanistan",
             "Aland Islands",
