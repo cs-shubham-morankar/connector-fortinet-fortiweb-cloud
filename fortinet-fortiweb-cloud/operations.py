@@ -1,7 +1,7 @@
 """
 Copyright start
 MIT License
-Copyright (c) 2024 Fortinet Inc
+Copyright (c) 2025 Fortinet Inc
 Copyright end
 """
 
@@ -27,6 +27,7 @@ class FortiWeb(object):
         try:
             url = self.url + url
             headers = {
+                "Accept": "application/json",
                 "Content-Type": "application/json",
                 "Authorization": "Basic " + self.api_key
             }
@@ -56,7 +57,7 @@ class FortiWeb(object):
 def get_incident_dashboard_details(config, params):
     try:
         fw = FortiWeb(config)
-        endpoint = "/threat_analytics/dashboard"
+        endpoint = "/ta/dashboard"
         query_params = {
             "widget_id": WIDGET_NAMES.get(params.get("widget_id"), params.get("widget_id")),
             "action": params.get("action").lower() if params.get("action") else "",
@@ -73,7 +74,7 @@ def get_incident_dashboard_details(config, params):
 def get_incident_list(config, params):
     try:
         fw = FortiWeb(config)
-        endpoint = "/threat_analytics/incidents"
+        endpoint = "/ta/incidents"
         if params.get("filter"):
             filter = json.dumps(params.get("filter"))
             filter = urllib.parse.quote(filter)
@@ -93,7 +94,7 @@ def get_incident_list(config, params):
 def get_incident_details(config, params):
     try:
         fw = FortiWeb(config)
-        endpoint = "/threat_analytics/incidents/{0}".format(params.get("incident_id"))
+        endpoint = "/ta/incidents/{0}".format(params.get("incident_id"))
         response = fw.make_rest_call(endpoint)
         return response
     except Exception as err:
@@ -103,7 +104,7 @@ def get_incident_details(config, params):
 def get_incident_timeline_details(config, params):
     try:
         fw = FortiWeb(config)
-        endpoint = "/threat_analytics/incidents/{0}/timeline".format(params.get("incident_id"))
+        endpoint = "/ta/incidents/{0}/timeline".format(params.get("incident_id"))
         response = fw.make_rest_call(endpoint)
         return response
     except Exception as err:
@@ -113,7 +114,7 @@ def get_incident_timeline_details(config, params):
 def get_insight_events_summary(config, params):
     try:
         fw = FortiWeb(config)
-        endpoint = "/threat_analytics/insight/summary"
+        endpoint = "/ta/insight/summary"
         response = fw.make_rest_call(endpoint)
         return response
     except Exception as err:
@@ -123,7 +124,7 @@ def get_insight_events_summary(config, params):
 def get_incident_aggregated_details(config, params):
     try:
         fw = FortiWeb(config)
-        endpoint = "/threat_analytics/incidents/{0}/aggs".format(params.get("incident_id"))
+        endpoint = "/ta/incidents/{0}/aggs".format(params.get("incident_id"))
         query_params = {
             "name": GROUP_BY.get(params.get("name"), params.get("name"))
         }
@@ -136,7 +137,7 @@ def get_incident_aggregated_details(config, params):
 def get_insight_events(config, params):
     try:
         fw = FortiWeb(config)
-        endpoint = "/threat_analytics/insight"
+        endpoint = "/ta/insight"
         query_params = {
             "type": EVENT_TYPE.get(params.get("type"), params.get("type")),
             "cursor": params.get("cursor"),
@@ -153,7 +154,7 @@ def get_insight_events(config, params):
 def get_ip_protection(config, params):
     try:
         fw = FortiWeb(config)
-        endpoint = "/application/{ep_id}/ip_protection".format(ep_id=params.get("epid"))
+        endpoint = "/waf/apps/{ep_id}/ip_protection".format(ep_id=params.get("epid"))
         response = fw.make_rest_call(endpoint)
         return response
     except Exception as err:
@@ -170,7 +171,7 @@ def add_ip_protection(config, params):
             if not isinstance(query_params["configs"]["ip_list"][idx].get("ip"), str):
                 del query_params["configs"]["ip_list"][idx]
 
-        endpoint = "/application/{ep_id}/ip_protection".format(ep_id=params.get("epid"))
+        endpoint = "/waf/apps/{ep_id}/ip_protection".format(ep_id=params.get("epid"))
         if not isinstance(query_params["configs"]["ip_list"], list):
             query_params["configs"]["ip_list"] = []
         ip_type = IP_TYPE.get(params.get("iptype"))
@@ -185,7 +186,7 @@ def delete_ip_protection(config, params):
     try:
         fw = FortiWeb(config)
         query_params = get_ip_protection(config, params).get("result")
-        endpoint = "/application/{ep_id}/ip_protection".format(ep_id=params.get("epid"))
+        endpoint = "/waf/apps/{ep_id}/ip_protection".format(ep_id=params.get("epid"))
 
         ip_type = IP_TYPE.get(params.get("iptype"))
         for idx in range(len(query_params["configs"]["ip_list"])):
@@ -217,7 +218,9 @@ def update_geo_ip_block_list(config, params):
     try:
         fw = FortiWeb(config)
         query_params = get_ip_protection(config, params).get("result")
-        endpoint = "/application/{ep_id}/ip_protection".format(ep_id=params.get("epid"))
+        query_params['configs']['ip_list'] = [ip_entry for ip_entry in query_params['configs']['ip_list'] if
+                                              ip_entry['ip'] not in [None, "", "null"]]
+        endpoint = "/waf/apps/{ep_id}/ip_protection".format(ep_id=params.get("epid"))
         if params.get("block_country_list"):
             original_list = query_params["configs"]["block_country_list"]
             if params.get("operation_to_perform") == "Add Countries To Block List":
@@ -237,23 +240,42 @@ def update_geo_ip_block_list(config, params):
 def get_application_list(config, params):
     try:
         fw = FortiWeb(config)
-        endpoint = "/application"
+        endpoint = "/waf/apps"
+        if params.get("filter"):
+            filter = json.dumps(params.get("filter"))
+            filter = urllib.parse.quote(filter)
+            endpoint = endpoint + "?filter={0}".format(filter)
         query_params = {
-            "filter": params.get("filter"),
             "size": params.get("size"),
-            "cursor": params.get("cursor")
+            "cursor": params.get("cursor"),
+            "forward": params.get("forward")
         }
         query_params = {k: v for k, v in query_params.items() if v is not None and v != ""}
-        query_params["filter"] = json.dumps(query_params.get("filter"))
         response = fw.make_rest_call(endpoint, params=query_params)
         return response
     except Exception as err:
         raise ConnectorError(str(err))
 
 
+def execute_an_api_call(config, params):
+    try:
+        fw = FortiWeb(config)
+        endpoint = params.get("endpoint")
+        http_method = params.get("method")
+        query_params = params.get("query_params") if params.get("query_params") else None
+        payload = json.dumps(params.get("payload")) if params.get("payload") else None
+        logger.debug("Payload: {0}".format(payload))
+        response = fw.make_rest_call(endpoint, http_method, params=query_params, data=json.dumps(payload))
+        logger.debug("Response: {0}".format(response))
+        return response
+    except Exception as err:
+        logger.exception("{0}".format(str(err)))
+        raise ConnectorError("{0}".format(str(err)))
+
+
 def check_health(config):
     try:
-        response = get_incident_list(config, params={"time_range": "7d"})
+        response = get_application_list(config, params={})
         if response:
             return True
     except Exception as err:
@@ -273,5 +295,6 @@ operations = {
     "get_ip_protection": get_ip_protection,
     "add_ip_protection": add_ip_protection,
     "delete_ip_protection": delete_ip_protection,
-    "update_geo_ip_block_list": update_geo_ip_block_list
+    "update_geo_ip_block_list": update_geo_ip_block_list,
+    "execute_an_api_call": execute_an_api_call
 }

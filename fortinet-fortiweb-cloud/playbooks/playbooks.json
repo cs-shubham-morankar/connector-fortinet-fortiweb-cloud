@@ -3,8 +3,8 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - Fortinet FortiWeb Cloud - 1.1.0",
-      "description": "Sample playbooks for \"Fortinet FortiWeb Cloud\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "name": "Sample - Fortinet FortiAppSec Cloud - 2.0.0",
+      "description": "Sample playbooks for \"Fortinet FortiAppSec Cloud\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": null,
       "uuid": "5794f2b9-1cd3-490e-a4b3-75902abafb8b",
@@ -13,7 +13,7 @@
       "importedBy": [],
       "recordTags": [
         "Fortinet",
-        "fortinet-fortiweb-cloud"
+        "fortinet-fortiappsec-cloud"
       ],
       "workflows": [
         {
@@ -22,7 +22,7 @@
           "name": "Get Applications List",
           "aliasName": null,
           "tag": null,
-          "description": "Retrieves a list of all applications from FortiWeb Cloud based on the filter criteria you have specified.",
+          "description": "Retrieves a list of all applications from FortiAppSec based on the filter criteria you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -39,9 +39,10 @@
               "name": "Get Application List",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "95e7e297-3264-4720-bbb5-68299b6a5544",
                 "params": {
+                  "forward": "",
                   "size": "",
                   "cursor": "",
                   "filter": [
@@ -59,7 +60,7 @@
                     }
                   ]
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "get_application_list",
                 "operationTitle": "Get Applications List",
@@ -79,7 +80,7 @@
               "description": null,
               "arguments": {
                 "route": "66c2d7aa-03ac-476c-9794-76eaccb4b839",
-                "title": "Fortinet FortiWeb Cloud: Get Applications List\"",
+                "title": "Fortinet FortiAppSec Cloud: Get Applications List\"",
                 "resources": [
                   "alerts"
                 ],
@@ -131,7 +132,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -139,8 +140,8 @@
           "triggerLimit": null,
           "name": "Get Incidents List",
           "aliasName": null,
-          "tag": "#Fortinet FortiWeb Cloud",
-          "description": "Retrieves a list of all incidents from FortiWeb Cloud based on the time range and other input parameters you have specified.",
+          "tag": null,
+          "description": "Retrieves a list of all incidents from FortiAppSec based on the time range and other input parameters you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -157,7 +158,7 @@
               "name": "Get Incidents List",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "76713b6a-a644-4932-9d65-18f743c15667",
                 "params": {
                   "page": "",
@@ -165,7 +166,7 @@
                   "filter": "[\n  {\n    \"id\": \"risk\",\n    \"logic\": {\n      \"is\": {\n        \"string\": true\n      },\n      \"search\": \"string\"\n    },\n    \"value\": [\n      \"Low\"\n    ]\n  }\n]",
                   "time_range": "7d"
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "get_incident_list",
                 "operationTitle": "Get Incidents List",
@@ -219,7 +220,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -227,8 +228,8 @@
           "triggerLimit": null,
           "name": "Get Incident Timeline Details",
           "aliasName": null,
-          "tag": "#Fortinet FortiWeb Cloud",
-          "description": "Retrieves information for a specific incident timeline from FortiWeb Cloud based on the incident ID you have specified.",
+          "tag": null,
+          "description": "Retrieves information for a specific incident timeline from FortiAppSec Cloud based on the incident ID you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -245,12 +246,12 @@
               "name": "Get Incident Timeline Details",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "",
                 "params": {
                   "incident_id": ""
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "get_incident_timeline_details",
                 "operationTitle": "Get Incident Timeline Details"
@@ -303,7 +304,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -311,8 +312,8 @@
           "triggerLimit": null,
           "name": "Get Incident Details",
           "aliasName": null,
-          "tag": "#Fortinet FortiWeb Cloud",
-          "description": "Retrieves information for a specific incident from FortiWeb Cloud based on the incident ID you have specified.",
+          "tag": null,
+          "description": "Retrieves information for a specific incident from FortiAppSec Cloud based on the incident ID you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -329,12 +330,12 @@
               "name": "Get Incident Details",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "",
                 "params": {
                   "incident_id": ""
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "get_incident_details",
                 "operationTitle": "Get Incident Details"
@@ -387,7 +388,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -395,8 +396,8 @@
           "triggerLimit": null,
           "name": "Get Insight Events Summary",
           "aliasName": null,
-          "tag": "#Fortinet FortiWeb Cloud",
-          "description": "Retrieves a list of all insight events summary from FortiWeb Cloud.",
+          "tag": null,
+          "description": "Retrieves a list of all insight events summary from FortiAppSec Cloud.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -413,10 +414,10 @@
               "name": "Get Insight Events Summary",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "",
                 "params": [],
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "get_insight_events_summary",
                 "operationTitle": "Get Insight Events Summary"
@@ -469,7 +470,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -478,7 +479,7 @@
           "name": "Get IP Protection",
           "aliasName": null,
           "tag": null,
-          "description": "Retrieves a configuration of IP protection from FortiWeb Cloud based on the application ID you have specified.",
+          "description": "Retrieves a configuration of IP protection from FortiAppSec Cloud based on the application ID you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -495,12 +496,12 @@
               "name": "Get IP Protection",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "76713b6a-a644-4932-9d65-18f743c15667",
                 "params": {
                   "epid": "8242004135"
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "get_ip_protection",
                 "operationTitle": "Get IP Protection",
@@ -520,7 +521,7 @@
               "description": null,
               "arguments": {
                 "route": "ac84c361-bdc0-4dd9-bb97-7e45b9b9dc40",
-                "title": "Fortinet FortiWeb Cloud: Get IP Protection",
+                "title": "Fortinet FortiAppSec Cloud: Get IP Protection",
                 "resources": [
                   "alerts"
                 ],
@@ -572,7 +573,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -581,7 +582,7 @@
           "name": "Delete IP Protection",
           "aliasName": null,
           "tag": null,
-          "description": "Deletes a specific configuration of IP protection in FortiWeb Cloud based on the application ID, IP type, and  IP address you have specified.",
+          "description": "Deletes a specific configuration of IP protection in FortiAppSec Cloud based on the application ID, IP type, and  IP address you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -598,7 +599,7 @@
               "name": "Delete IP Protection",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "76713b6a-a644-4932-9d65-18f743c15667",
                 "params": {
                   "epid": "1",
@@ -606,7 +607,7 @@
                   "ipaddress": "10.132.254.159",
                   "block_country_list": []
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "delete_ip_protection",
                 "operationTitle": "Delete IP Protection",
@@ -626,7 +627,7 @@
               "description": null,
               "arguments": {
                 "route": "74914a53-2fb9-4c9c-aee1-a13848ce1280",
-                "title": "Fortinet FortiWeb Cloud: Delete IP Protection",
+                "title": "Fortinet FortiAppSec Cloud: Delete IP Protection",
                 "resources": [
                   "alerts"
                 ],
@@ -678,7 +679,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -686,8 +687,8 @@
           "triggerLimit": null,
           "name": "Get Incident Aggregated Details",
           "aliasName": null,
-          "tag": "#Fortinet FortiWeb Cloud",
-          "description": "Retrieves information for a specific incident aggregated from FortiWeb Cloud based on the incident ID and group by parameters you have specified.",
+          "tag": null,
+          "description": "Retrieves information for a specific incident aggregated from FortiAppSec Cloud based on the incident ID and group by parameters you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -704,13 +705,13 @@
               "name": "Get Incident Aggregated Details",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "",
                 "params": {
                   "name": "",
                   "incident_id": ""
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "get_incident_aggregated_details",
                 "operationTitle": "Get Incident Aggregated Details"
@@ -763,7 +764,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -771,8 +772,8 @@
           "triggerLimit": null,
           "name": "Get Insight Events",
           "aliasName": null,
-          "tag": "#Fortinet FortiWeb Cloud",
-          "description": "Retrieves information for a insight events by event type from FortiWeb Cloud based on the input parameters you have specified.",
+          "tag": null,
+          "description": "Retrieves information for a insight events by event type from FortiAppSec Cloud based on the input parameters you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -789,7 +790,7 @@
               "name": "Get Insight Events",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "76713b6a-a644-4932-9d65-18f743c15667",
                 "params": {
                   "size": "",
@@ -797,7 +798,7 @@
                   "cursor": "",
                   "forward": ""
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "get_insight_events",
                 "operationTitle": "Get Insight Events",
@@ -851,7 +852,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -860,7 +861,7 @@
           "name": "Add IP Protection",
           "aliasName": null,
           "tag": null,
-          "description": "Adds an configuration of IP protection in FortiWeb Cloud based on the application ID, IP type, and  IP address you have specified.",
+          "description": "Adds an configuration of IP protection in FortiAppSec Cloud based on the application ID, IP type, and  IP address you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -877,15 +878,14 @@
               "name": "Add IP Protection",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "76713b6a-a644-4932-9d65-18f743c15667",
                 "params": {
                   "epid": "1",
                   "iptype": "Trust IP",
-                  "ipaddress": "10.132.254.159",
-                  "block_country_list": []
+                  "ipaddress": "10.132.254.159"
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "add_ip_protection",
                 "operationTitle": "Add IP Protection",
@@ -905,7 +905,7 @@
               "description": null,
               "arguments": {
                 "route": "154f0ff5-9599-444a-80d3-243f8429cbb7",
-                "title": "Fortinet FortiWeb Cloud: Add IP Protection",
+                "title": "Fortinet FortiAppSec Cloud: Add IP Protection",
                 "resources": [
                   "alerts"
                 ],
@@ -957,7 +957,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -965,8 +965,8 @@
           "triggerLimit": null,
           "name": "Get Incident Dashboard Details",
           "aliasName": null,
-          "tag": "#Fortinet FortiWeb Cloud",
-          "description": "Retrieves information for the global setting configurations from FortiWeb Cloud based on the widget name and other input parameters you have specified.",
+          "tag": null,
+          "description": "Retrieves information for the global setting configurations from FortiAppSec Cloud based on the widget name and other input parameters you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -983,7 +983,7 @@
               "name": "Get Incident Dashboard Details",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "",
                 "params": {
                   "host": "",
@@ -991,7 +991,7 @@
                   "widget_id": "",
                   "time_range": ""
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "get_incident_dashboard_details",
                 "operationTitle": "Get Incident Dashboard Details"
@@ -1044,7 +1044,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         },
         {
@@ -1091,14 +1091,14 @@
               "name": "Update Geo IP Block List",
               "description": null,
               "arguments": {
-                "name": "Fortinet FortiWeb Cloud",
+                "name": "Fortinet FortiAppSec Cloud",
                 "config": "0664efff-4597-4b59-a0a4-b996aa4a1a9a",
                 "params": {
                   "epid": "8242004135",
                   "block_country_list": "",
                   "operation_to_perform": "Add Countries To Block List"
                 },
-                "version": "1.1.0",
+                "version": "2.0.0",
                 "connector": "fortinet-fortiweb-cloud",
                 "operation": "update_geo_ip_block_list",
                 "operationTitle": "Update Geo IP Block List",
@@ -1135,7 +1135,7 @@
           "importedBy": [],
           "recordTags": [
             "Fortinet",
-            "fortinet-fortiweb-cloud"
+            "fortinet-fortiappsec-cloud"
           ]
         }
       ]
@@ -1143,6 +1143,6 @@
   ],
   "exported_tags": [
     "Fortinet",
-    "fortinet-fortiweb-cloud"
+    "fortinet-fortiappsec-cloud"
   ]
 }

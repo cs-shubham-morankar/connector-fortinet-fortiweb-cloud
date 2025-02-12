@@ -1,0 +1,109 @@
+{
+    "config": [
+        {
+            "server_url": "https://api.appsec.fortinet.com",
+            "api_key": "",
+            "verify_ssl": false
+        }
+    ],
+    "get_incident_dashboard_details": [
+        {
+            "widget_id": "Threats Timeline",
+            "action": "All",
+            "host": null,
+            "time_range": null
+        }
+    ],
+    "get_incident_list": [
+        {
+            "time_range": "24h",
+            "filter": null,
+            "size": 1,
+            "page": null
+        }
+    ],
+    "get_incident_details": [
+        {
+            "incident_id": "cloud_us-east-1_9_750000"
+        }
+    ],
+    "get_incident_timeline_details": [
+        {
+            "incident_id": "cloud_us-east-1_9_750000"
+        }
+    ],
+    "get_insight_events_summary": [
+        {}
+    ],
+    "get_incident_aggregated_details": [
+        {
+            "incident_id": "cloud_us-east-1_9_750000",
+            "name": "Logs"
+        }
+    ],
+    "get_insight_events": [
+        {
+            "type": "Exposed Server",
+            "cursor": null,
+            "size": null,
+            "forward": true
+        }
+    ],
+    "get_ip_protection": [
+        {
+            "epid": "8242004135"
+        }
+    ],
+    "add_ip_protection": [
+        {
+            "epid": "8242004135",
+            "iptype": "Trust IP",
+            "ipaddress": "10.132.254.159"
+        }
+    ],
+    "delete_ip_protection": [
+        {
+            "epid": "8242004135",
+            "iptype": "Trust IP",
+            "ipaddress": "10.132.254.159"
+        }
+    ],
+    "get_application_list": [
+        {
+            "filter": [
+                {
+                    "id": "platform",
+                    "logic": {
+                        "is": {
+                            "string": true
+                        }
+                    },
+                    "value": [
+                        "GCP",
+                        "AWS"
+                    ]
+                }
+            ],
+            "size": 1,
+            "cursor": null,
+            "forward": false
+        }
+    ],
+    "update_geo_ip_block_list": [
+        {
+            "epid": "8242004135",
+            "operation_to_perform": "Add Countries To Block List",
+            "block_country_list": [
+                "Aland Islands"
+            ]
+        }
+    ],
+    "execute_an_api_call": [
+        {
+            "method": "GET",
+            "endpoint": "/ta/insight/summary",
+            "query_params": null,
+            "payload": null
+        }
+    ]
+}
