@@ -1,13 +1,13 @@
 {
   "name": "fortinet-fortiweb-cloud",
-  "version": "1.1.0",
-  "label": "Fortinet FortiWeb Cloud",
-  "description": "FortiWeb Cloud is an cloud native SaaS based web application firewall (WAF) that protects web applications.",
+  "version": "2.0.0",
+  "label": "Fortinet FortiAppSec Cloud",
+  "description": "FortiAppSec Cloud simplifies and strengthens application security and delivery across hybrid and cloud environments. This SaaS platform secures network availability and accelerates application performance while delivering consistent security.",
   "publisher": "Fortinet",
-  "contributor": "Danny",
+  "contributor": "",
   "cs_approved": true,
   "cs_compatible": true,
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.1.0/fortinet-fortiweb-cloud/953/fortinet-fortiweb-cloud-v1-1-0",
+  "help_online": "",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "category": "Cloud Security",
@@ -15,14 +15,14 @@
     "fields": [
       {
         "title": "Server URL",
-        "description": "Specify the URL of the FortiWeb Cloud server to connect and perform automated operations.",
+        "description": "Specify the URL of the FortiAppSec Cloud server to connect and perform automated operations.",
         "type": "text",
         "name": "server_url",
         "required": true,
         "editable": true,
         "visible": true,
-        "value": "https://api.fortiweb-cloud.com",
-        "tooltip": "Specify the URL of the FortiWeb Cloud server to connect and perform automated operations."
+        "value": "https://api.appsec.fortinet.com",
+        "tooltip": "Specify the URL of the FortiAppSec Cloud server to connect and perform automated operations."
       },
       {
         "title": "API Key",
@@ -51,19 +51,19 @@
     {
       "operation": "get_incident_dashboard_details",
       "title": "Get Incident Dashboard Details",
-      "description": "Retrieves information for the global setting configurations from FortiWeb Cloud based on the widget name, action name, and other filter criteria you have specified.",
+      "description": "Retrieves information for the global setting configurations from FortiAppSec Cloud based on the widget name, action name, and other filter criteria you have specified.",
       "category": "investigation",
       "annotation": "get_incident_dashboard_details",
       "enabled": true,
       "parameters": [
         {
           "title": "Widget Name",
-          "description": "Select the name of the widget based on which to filter the incident dashboard retrieved from FortiWeb Cloud. You can choose from the following options: Threats Timeline, Incidents Timeline, Country, Attack Type, High Risk, or Http Host.",
+          "description": "Select the name of the widget based on which to filter the incident dashboard retrieved from FortiAppSec Cloud. You can choose from the following options: Threats Timeline, Incidents Timeline, Country, Attack Type, High Risk, or Http Host.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "select",
-          "tooltip": "Select the name of the widget based on which to filter the incident dashboard retrieved from FortiWeb Cloud. You can choose from the following options: Threats Timeline, Incidents Timeline, Country, Attack Type, High Risk, or Http Host.",
+          "tooltip": "Select the name of the widget based on which to filter the incident dashboard retrieved from FortiAppSec Cloud. You can choose from the following options: Threats Timeline, Incidents Timeline, Country, Attack Type, High Risk, or Http Host.",
           "name": "widget_id",
           "options": [
             "Threats Timeline",
@@ -76,12 +76,12 @@
         },
         {
           "title": "Action Name",
-          "description": "Select the action name based on which to filter the incident dashboard retrieved from FortiWeb Cloud. You can choose from the following options: All, Block, or Monitor.",
+          "description": "Select the action name based on which to filter the incident dashboard retrieved from FortiAppSec Cloud. You can choose from the following options: All, Block, or Monitor.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "select",
-          "tooltip": "Select the action name based on which to filter the incident dashboard retrieved from FortiWeb Cloud. You can choose from the following options: All, Block, or Monitor.",
+          "tooltip": "Select the action name based on which to filter the incident dashboard retrieved from FortiAppSec Cloud. You can choose from the following options: All, Block, or Monitor.",
           "name": "action",
           "options": [
             "All",
@@ -91,24 +91,24 @@
         },
         {
           "title": "Host Name",
-          "description": "Specify the name of the host based on which to retrieve information from FortiWeb Cloud.",
+          "description": "Specify the name of the host based on which to retrieve information from FortiAppSec Cloud.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify the name of the host based on which to retrieve information from FortiWeb Cloud.",
+          "tooltip": "Specify the name of the host based on which to retrieve information from FortiAppSec Cloud.",
           "name": "host"
         },
         {
           "title": "Time Range",
-          "description": "Specify the time range during which the incidents were created in FortiWeb Cloud, and from to retrieve incident dashboard details. For example: 24h or 7d to fetch incidents from the last 24 hours or 7 days, respectively.",
+          "description": "Specify the time range during which the incidents were created in FortiAppSec Cloud, and from to retrieve incident dashboard details. Note: Could be one of 24h, 240h (10 days) or 720h (30 days)",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify the time range during which the incidents were created in FortiWeb Cloud, and from to retrieve incident dashboard details. For example: 24h or 7d to fetch incidents from the last 24 hours or 7 days, respectively.",
+          "tooltip": "Specify the time range during which the incidents were created in FortiAppSec Cloud, and from to retrieve incident dashboard details. Note: Could be one of 24h, 240h (10 days) or 720h (30 days)",
           "name": "time_range",
-          "placeholder": "For e.g 24h, 7d, etc."
+          "placeholder": "For e.g 24h, 240h or 720h."
         }
       ],
       "conditional_output_schema": [
@@ -196,30 +196,30 @@
     {
       "operation": "get_incident_list",
       "title": "Get Incidents List",
-      "description": "Retrieves a list of all incidents from FortiWeb Cloud based on the time range and other filter criteria you have specified.",
+      "description": "Retrieves a list of all incidents from FortiAppSec Cloud based on the time range and other filter criteria you have specified.",
       "category": "investigation",
       "annotation": "get_incident_list",
       "enabled": true,
       "parameters": [
         {
           "title": "Time Range",
-          "description": "Specify the time range during which the incidents were created in FortiWeb Cloud, and from to retrieve incident dashboard details. For example: 24h or 7d to fetch incidents from the last 24 hours or 7 days, respectively.",
+          "description": "Specify the time range during which the incidents were created in FortiAppSec Cloud, and from to retrieve incident dashboard details. For example: Could be 24h, 7d, 1m, etc.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify the time range during which the incidents were created in FortiWeb Cloud, and from to retrieve incident dashboard details. For example: 24h or 7d to fetch incidents from the last 24 hours or 7 days, respectively.",
+          "tooltip": "Specify the time range during which the incidents were created in FortiAppSec Cloud, and from to retrieve incident dashboard details. For example: Could be 24h, 7d, 1m, etc.",
           "name": "time_range",
-          "placeholder": "For e.g 24h, 7d, etc."
+          "placeholder": "For e.g 24h, 7d, 1m, etc."
         },
         {
           "title": "Filter",
-          "description": "Specify multiple key/value pairs in JSON format to filter incidents retrieved from FortiWeb Cloud.",
+          "description": "Specify multiple key/value pairs in JSON format to filter incidents retrieved from FortiAppSec Cloud.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "json",
-          "tooltip": "Specify multiple key/value pairs in JSON format to filter incidents retrieved from FortiWeb Cloud.",
+          "tooltip": "Specify multiple key/value pairs in JSON format to filter incidents retrieved from FortiAppSec Cloud.",
           "name": "filter"
         },
         {
@@ -234,12 +234,12 @@
         },
         {
           "title": "Page Number",
-          "description": "Specify the page number from which to fetch incidents from FortiWeb Cloud.",
+          "description": "Specify the page number from which to fetch incidents from FortiAppSec Cloud.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
-          "tooltip": "Specify the page number from which to fetch incidents from FortiWeb Cloud.",
+          "tooltip": "Specify the page number from which to fetch incidents from FortiAppSec Cloud.",
           "name": "page"
         }
       ],
@@ -247,6 +247,9 @@
         "total": "",
         "result": [
           {
+            "ep_ids": [],
+            "last_update_time": "",
+            "name": "",
             "incident_id": "",
             "platform": "",
             "risk": "",
@@ -266,23 +269,27 @@
     {
       "operation": "get_incident_details",
       "title": "Get Incident Details",
-      "description": "Retrieves information for a specific incident from FortiWeb Cloud based on the incident ID you have specified.",
+      "description": "Retrieves information for a specific incident from FortiAppSec Cloud based on the incident ID you have specified.",
       "category": "investigation",
       "annotation": "get_incident_details",
       "enabled": true,
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "Specify the ID of the incident whose details are to be retrieved from FortiWeb Cloud.",
+          "description": "Specify the ID of the incident whose details are to be retrieved from FortiAppSec Cloud.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify the ID of the incident whose details are to be retrieved from FortiWeb Cloud.",
-          "name": "incident_id"
+          "tooltip": "Specify the ID of the incident whose details are to be retrieved from FortiAppSec Cloud.",
+          "name": "incident_id",
+          "placeholder": "For e.g us-east-1_4_120"
         }
       ],
       "output_schema": {
+        "name": "",
+        "last_update_time": "",
+        "ep_ids": "",
         "incident_id": "",
         "platform": "",
         "risk": "",
@@ -301,27 +308,29 @@
         "hosts": [],
         "src_countries": [],
         "firsttime": "",
-        "src_ips": [],
+        "src_ips": [
+        ],
         "http_urls": []
       }
     },
     {
       "operation": "get_incident_timeline_details",
       "title": "Get Incident Timeline Details",
-      "description": "Retrieves information for a specific incident timeline from FortiWeb Cloud based on the incident ID you have specified.",
+      "description": "Retrieves information for a specific incident timeline from FortiAppSec Cloud based on the incident ID you have specified.",
       "category": "investigation",
       "annotation": "get_incident_timeline_details",
       "enabled": true,
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "Specify the ID of the incident whose timeline details are to be retrieved from FortiWeb Cloud.",
+          "description": "Specify the ID of the incident whose timeline details are to be retrieved from FortiAppSec Cloud.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify the ID of the incident whose timeline details are to be retrieved from FortiWeb Cloud.",
-          "name": "incident_id"
+          "tooltip": "Specify the ID of the incident whose timeline details are to be retrieved from FortiAppSec Cloud.",
+          "name": "incident_id",
+          "placeholder": "For e.g us-east-1_4_120"
         }
       ],
       "output_schema": {
@@ -344,7 +353,7 @@
     {
       "operation": "get_insight_events_summary",
       "title": "Get Insight Events Summary",
-      "description": "Retrieves a list of all insight events summary from FortiWeb Cloud.",
+      "description": "Retrieves a list of all insight events summary from FortiAppSec Cloud.",
       "category": "investigation",
       "annotation": "get_insight_events_summary",
       "enabled": true,
@@ -364,29 +373,29 @@
     {
       "operation": "get_incident_aggregated_details",
       "title": "Get Incident Aggregated Details",
-      "description": "Retrieves information for a specific incident aggregated from FortiWeb Cloud based on the incident ID and group by parameters you have specified.",
+      "description": "Retrieves information for a specific incident aggregated from FortiAppSec Cloud based on the incident ID and group by parameters you have specified.",
       "category": "investigation",
       "annotation": "get_incident_aggregated_details",
       "enabled": true,
       "parameters": [
         {
           "title": "Incident ID",
-          "description": "Specify the ID of the incident whose aggregated details are to be retrieved from FortiWeb Cloud.",
+          "description": "Specify the ID of the incident whose aggregated details are to be retrieved from FortiAppSec Cloud.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify the ID of the incident whose aggregated details are to be retrieved from FortiWeb Cloud.",
+          "tooltip": "Specify the ID of the incident whose aggregated details are to be retrieved from FortiAppSec Cloud.",
           "name": "incident_id"
         },
         {
           "title": "Group By",
-          "description": "Select the grouping criteria based on which to filter incident aggregated details retrieved from FortiWeb Cloud. Select Logs to get sample attack logs of a specific incident. You can choose from the following options: Logs, Attack Type, Source Country, HTTP Host, HTTP URL, Source IP, Signature CVE ID, or OWASP TOP10.",
+          "description": "Select the grouping criteria based on which to filter incident aggregated details retrieved from FortiAppSec Cloud. Select Logs to get sample attack logs of a specific incident. You can choose from the following options: Logs, Attack Type, Source Country, HTTP Host, HTTP URL, Source IP, Signature CVE ID, or OWASP TOP10.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "select",
-          "tooltip": "Select the grouping criteria based on which to filter incident aggregated details retrieved from FortiWeb Cloud. Select Logs to get sample attack logs of a specific incident. You can choose from the following options: Logs, Attack Type, Source Country, HTTP Host, HTTP URL, Source IP, Signature CVE ID, or OWASP TOP10.",
+          "tooltip": "Select the grouping criteria based on which to filter incident aggregated details retrieved from FortiAppSec Cloud. Select Logs to get sample attack logs of a specific incident. You can choose from the following options: Logs, Attack Type, Source Country, HTTP Host, HTTP URL, Source IP, Signature CVE ID, or OWASP TOP10.",
           "name": "name",
           "options": [
             "Logs",
@@ -447,19 +456,19 @@
     {
       "operation": "get_insight_events",
       "title": "Get Insight Events",
-      "description": "Retrieves information for insight events from FortiWeb Cloud based on the event type and other filter criteria you have specified.",
+      "description": "Retrieves information for insight events from FortiAppSec Cloud based on the event type and other filter criteria you have specified.",
       "category": "investigation",
       "annotation": "get_insight_events",
       "enabled": true,
       "parameters": [
         {
           "title": "Event Type",
-          "description": "Select the type of the event based on which to filter insight events retrieved from FortiWeb Cloud. You can choose from the following options: Exposed Server, Trust IP, Unprotected Host, Monitor Service, or WAF Config Alarm.",
+          "description": "Select the type of the event based on which to filter insight events retrieved from FortiAppSec Cloud. You can choose from the following options: Exposed Server, Trust IP, Unprotected Host, Monitor Service, or WAF Config Alarm.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "select",
-          "tooltip": "Select the type of the event based on which to filter insight events retrieved from FortiWeb Cloud. You can choose from the following options: Exposed Server, Trust IP, Unprotected Host, Monitor Service, or WAF Config Alarm.",
+          "tooltip": "Select the type of the event based on which to filter insight events retrieved from FortiAppSec Cloud. You can choose from the following options: Exposed Server, Trust IP, Unprotected Host, Monitor Service, or WAF Config Alarm.",
           "name": "type",
           "options": [
             "Exposed Server",
@@ -471,12 +480,12 @@
         },
         {
           "title": "Cursor",
-          "description": "Specify the cursor value based on which to filter insight events retrieved from FortiWeb Cloud. Leave the cursor value empty, to list the items of the first page. Use the value of the next_cursor parameter, returned in the result of the current page, to go forward to next page. Use the value of the prev_cursor parameter, returned in the result of the current page, to go to the previous page.",
+          "description": "Specify the cursor value based on which to filter insight events retrieved from FortiAppSec Cloud. Leave the cursor value empty, to list the items of the first page. Use the value of the next_cursor parameter, returned in the result of the current page, to go forward to next page. Use the value of the prev_cursor parameter, returned in the result of the current page, to go to the previous page.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify the cursor value based on which to filter insight events retrieved from FortiWeb Cloud. Leave the cursor value empty, to list the items of the first page. Use the value of the next_cursor parameter, returned in the result of the current page, to go forward to next page. Use the value of the prev_cursor parameter, returned in the result of the current page, to go to the previous page.",
+          "tooltip": "Specify the cursor value based on which to filter insight events retrieved from FortiAppSec Cloud. Leave the cursor value empty, to list the items of the first page. Use the value of the next_cursor parameter, returned in the result of the current page, to go forward to next page. Use the value of the prev_cursor parameter, returned in the result of the current page, to go to the previous page.",
           "name": "cursor"
         },
         {
@@ -588,21 +597,20 @@
     {
       "operation": "get_ip_protection",
       "title": "Get IP Protection",
-      "description": "Retrieves IP protection configuration from FortiWeb Cloud based on the application ID you have specified.",
+      "description": "Retrieves IP protection configuration from FortiAppSec Cloud based on the application ID you have specified.",
       "category": "investigation",
       "annotation": "get_ip_protection",
       "enabled": true,
       "parameters": [
         {
           "title": "Application ID",
-          "description": "Specify the ID of the application based on which you want to retrieve IP protection details from FortiWeb Cloud.",
+          "description": "Specify the ID of the application based on which you want to retrieve IP protection details from FortiAppSec Cloud.",
           "type": "text",
           "name": "epid",
           "required": true,
           "visible": true,
           "editable": true,
-          "value": "",
-          "tooltip": "Specify the ID of the application based on which you want to retrieve IP protection details from FortiWeb Cloud."
+          "tooltip": "Specify the ID of the application based on which you want to retrieve IP protection details from FortiAppSec Cloud."
         }
       ],
       "output_schema": {
@@ -611,9 +619,9 @@
             "status": "",
             "ip_list": [
               {
-                "ip": "",
                 "idx": "",
-                "type": ""
+                "type": "",
+                "ip": ""
               }
             ],
             "ip_reputation": "",
@@ -627,21 +635,21 @@
     {
       "operation": "add_ip_protection",
       "title": "Add IP Protection",
-      "description": "Adds an IP protection configuration in FortiWeb Cloud based on the application ID, IP type, and IP address you have specified.",
+      "description": "Adds an IP protection configuration in FortiAppSec Cloud based on the application ID, IP type, and IP address you have specified.",
       "category": "investigation",
       "annotation": "add_ip_protection",
       "enabled": true,
       "parameters": [
         {
           "title": "Application ID",
-          "description": "Specify the ID of the application to add IP protection details in FortiWeb Cloud.",
+          "description": "Specify the ID of the application to add IP protection details in FortiAppSec Cloud.",
           "type": "text",
           "name": "epid",
           "required": true,
           "visible": true,
           "editable": true,
           "value": "",
-          "tooltip": "Specify the ID of the application to add IP protection details in FortiWeb Cloud."
+          "tooltip": "Specify the ID of the application to add IP protection details in FortiAppSec Cloud."
         },
         {
           "title": "IP Type",
@@ -678,21 +686,21 @@
     {
       "operation": "delete_ip_protection",
       "title": "Delete IP Protection",
-      "description": "Deletes a specific IP protection configuration from FortiWeb Cloud based on the application ID, IP type, and IP address you have specified.",
+      "description": "Deletes a specific IP protection configuration from FortiAppSec Cloud based on the application ID, IP type, and IP address you have specified.",
       "category": "investigation",
       "annotation": "delete_ip_protection",
       "enabled": true,
       "parameters": [
         {
           "title": "Application ID",
-          "description": "Specify the ID of the application to delete associated IP protection details from FortiWeb Cloud.",
+          "description": "Specify the ID of the application to delete associated IP protection details from FortiAppSec Cloud.",
           "type": "text",
           "name": "epid",
           "required": true,
           "visible": true,
           "editable": true,
           "value": "",
-          "tooltip": "Specify the ID of the application to delete associated IP protection details from FortiWeb Cloud."
+          "tooltip": "Specify the ID of the application to delete associated IP protection details from FortiAppSec Cloud."
         },
         {
           "title": "IP Type",
@@ -712,14 +720,14 @@
         },
         {
           "title": "IP Address",
-          "description": "Specify the IP address of the application being deleted from FortiWeb Cloud.",
+          "description": "Specify the IP address of the application being deleted from FortiAppSec Cloud.",
           "type": "text",
           "name": "ipaddress",
           "required": true,
           "visible": true,
           "editable": true,
           "value": "",
-          "tooltip": "Specify the IP address of the application being deleted from FortiWeb Cloud. It can be a single IP or a range of addresses (e.g., 172.22.14.1-172.22.14.256 or 10:200::10:1-10:200:10:100)"
+          "tooltip": "Specify the IP address of the application being deleted from FortiAppSec Cloud. It can be a single IP or a range of addresses (e.g., 172.22.14.1-172.22.14.256 or 10:200::10:1-10:200:10:100)"
         }
       ],
       "output_schema": {
@@ -729,19 +737,19 @@
     {
       "operation": "get_application_list",
       "title": "Get Applications List",
-      "description": "Retrieves a list of all applications from FortiWeb Cloud based on the filter criteria you have specified.",
+      "description": "Retrieves a list of all applications from FortiAppSec Cloud based on the filter criteria you have specified.",
       "category": "investigation",
       "annotation": "get_application_list",
       "enabled": true,
       "parameters": [
         {
           "title": "Filter",
-          "description": "(Optional) Specify key-value pairs in JSON format to filter applications retrieved from FortiWeb Cloud.",
+          "description": "(Optional) Specify key-value pairs in JSON format to filter applications retrieved from FortiAppSec Cloud.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "json",
-          "tooltip": "(Optional) Specify key-value pairs in JSON format to filter applications retrieved from FortiWeb Cloud. The available \"id\" of filter are [\"app_name\", \"domain_name\", \"block_mode\", \"platform\", \"owner\", \"data\", \"blocked_req\", \"req\", \"assign_to\", \"template_name\"]",
+          "tooltip": "(Optional) Specify key-value pairs in JSON format to filter applications retrieved from FortiAppSec Cloud. The available \"id\" of filter are [\"app_name\", \"domain_name\", \"block_mode\", \"platform\", \"owner\", \"data\", \"blocked_req\", \"req\", \"assign_to\", \"template_name\"]",
           "name": "filter",
           "value": [
             {
@@ -777,6 +785,16 @@
           "type": "text",
           "name": "cursor",
           "tooltip": "(Optional) Specify a cursor value if a previous operation returned a partial result. To go forward to next page, specify the value of the next_cursor parameter from the response. To go to the previous page, specify the prev_cursor value."
+        },
+        {
+          "title": "Forward",
+          "description": "Select this option to fetch records from the next page. Clear this checkbox to fetch records from the previous page.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "tooltip": "Select this option to fetch records from the next page. Clear this checkbox to fetch records from the previous page.",
+          "name": "forward"
         }
       ],
       "output_schema": {
@@ -784,6 +802,24 @@
         "can_add": "",
         "app_list": [
           {
+            "account_uuid": "",
+            "allow_ip_list": {
+              "waf_ip": {
+                "eu-central-1": {
+                  "description": "",
+                  "ip4": [],
+                  "ip6": []
+                }
+              },
+              "management_ip": {
+                "ip4": [],
+                "ip6": []
+              },
+              "ip_count": ""
+            },
+            "domain_status": {
+              "fwbcloud.fortiweb-cloud-test.com": ""
+            },
             "req": "",
             "cost": "",
             "data": "",
@@ -804,7 +840,6 @@
             "create_time": "",
             "domain_name": "",
             "template_id": "",
-            "domain_status": {},
             "extra_domains": [],
             "template_name": "",
             "platform_region": "",
@@ -1107,6 +1142,62 @@
       "output_schema": {
         "detail": ""
       }
+    },
+    {
+      "operation": "execute_an_api_call",
+      "title": "Execute an API Request",
+      "annotation": "execute_an_api_call",
+      "description": "Sends an API request to any Fortinet FortiAppSec Cloud API endpoint based on specified HTTP method, endpoint, and other input parameters that you have specified, enabling flexible API interactions tailored to user needs. ",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "method",
+          "title": "HTTP Method",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Select an HTTP action for the request. You can select from the following options:  \n\nDELETE \n\nGET \n\nPATCH \n\nPOST \n\nPUT ",
+          "options": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ]
+        },
+        {
+          "title": "Endpoint",
+          "name": "endpoint",
+          "tooltip": "Specify the target API URL path for example: /ta/insight/summary",
+          "description": "Specify the target API URL path for the request. For example, if the website is https://example.com and URL path is https://example.com/ta/insight/summary, the endpoint would be /ta/insight/summary. ",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true
+        },
+        {
+          "title": "Query Parameters",
+          "name": "query_params",
+          "description": "(Optional) Specify any optional parameters to add to the URL and refine the request. ",
+          "type": "json",
+          "visible": true,
+          "editable": true,
+          "required": false
+        },
+        {
+          "name": "payload",
+          "title": "Request Payload",
+          "type": "json",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "description": "(Optional) Specify data, as JSON, to be sent as the request payload (typically for POST or PUT requests). "
+        }
+      ],
+      "output_schema": {}
     }
   ]
 }
