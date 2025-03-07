@@ -802,12 +802,12 @@
         },
         {
           "title": "Forward",
-          "description": "Select this option to fetch records from the next page. Clear this checkbox to fetch records from the previous page.",
+          "description": "(Optional) Select this option to fetch records from the next page. Clear this checkbox to fetch records from the previous page.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "checkbox",
-          "tooltip": "Select this option to fetch records from the next page. Clear this checkbox to fetch records from the previous page.",
+          "tooltip": "(Optional) Select this option to fetch records from the next page. Clear this checkbox to fetch records from the previous page.",
           "name": "forward"
         }
       ],
